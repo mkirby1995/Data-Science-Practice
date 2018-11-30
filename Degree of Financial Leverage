@@ -1,0 +1,73 @@
+#python3.6 degree_of_fin_leverage.py
+
+
+
+#change dict structure+++++++
+Company_A = {
+  'Common_stock': '10000000',
+  'Par_value': '5',
+  'Paid_in_capital': '3000000',
+  'Retained_earnings': '2000000',
+  'EBIT': '6000000',
+  'Tax_rate': '.3',
+  'Total_equity': '15000000',
+}
+
+Company_B = {
+    'Bonds': '4000000',
+    'Bond_rate': '.1',
+    'Common_stock': '6000000',
+    'Par_value': '5',
+    'Paid_in_capital': '4000000',
+    'Retained_earnings': '1000000',
+    'Total_equity': '15000000',
+    'EBIT': '6000000',
+    'Tax_rate': '.3',
+}
+
+#Company A
+Company_A_EBT = float(Company_A['EBIT'])
+Company_A_Taxes = Company_A_EBT * float(Company_A['Tax_rate'])
+Company_A_EAT = Company_A_EBT - Company_A_Taxes
+Company_A_Shares = float(Company_A['Common_stock']) / float(Company_A['Par_value'])
+Company_A_EPS = Company_A_EAT / Company_A_Shares
+Company_A_ROE = Company_A_EAT / float(Company_A['Total_equity'])
+Company_A_DFL = float(Company_A['EBIT']) / Company_A_EAT
+
+#Company B
+Company_B_Intrest = float(Company_B['Bonds']) * float(Company_B['Bond_rate'])
+Company_B_EBT = float(Company_B['EBIT']) - Company_B_Intrest
+Company_B_Taxes = Company_B_EBT * float(Company_B['Tax_rate'])
+Company_B_EAT = Company_B_EBT - Company_B_Taxes
+Company_B_Shares = float(Company_B['Common_stock']) / float(Company_B['Par_value'])
+Company_B_EPS = Company_B_EAT / Company_B_Shares
+Company_B_ROE = Company_B_EAT / float(Company_B['Total_equity'])
+Company_B_DFL = float(Company_B['EBIT']) / Company_B_EAT
+
+
+print("Company A has earnings Per Share of", Company_A_EPS, ".")
+print("Company A's Return of Equity is ", Company_A_ROE, ".")
+print("Comopany A has a", Company_A_DFL, "Degree of Financial Leverage.")
+print("_" * 10)
+print("Company B has earnings Per Share of", Company_B_EPS, ".")
+print("Company B's Return of Equity is ", Company_B_ROE, ".")
+print("Comopany B has a", Company_B_DFL, "Degree of Financial Leverage.")
+
+
+#(import numbers from excel wooksheet
+
+#import openpyxl
+#import os
+
+#os.chdir('/Users/mattkirby/Documents')
+# changes working directory to desired direcory (location of excel file)
+
+#wb = openpyxl.load_workbook('Financial Analysis FCX.xlsx')
+# sets wb variable to the desired workbook
+
+#sheet = wb.get_sheet_by_name('Income Statement')
+#sets sheet variable to desired sheet
+
+#Common_Stock = sheet['B63'].value
+#sets common stock variable to the value of cell B63 in (sheet variable)
+#)
