@@ -1,0 +1,18 @@
+#Dealing with data duplication
+
+import pandas as pd
+#imports the Pandas library as pd
+
+df = pd.DataFrame({'A': [0,0,0,0,0,1,0],
+                  'B': [0,2,3,5,0,2,0],
+                  'C': [0,3,4,1,0,2,0]})
+#imports a pandas DataFrame wirth 3 collumns of integers labled A, B, and C
+
+print(df, "\n")
+#prints the DataFrame
+
+df = df.drop_duplicates()
+#calls .Drop_duplicates function
+
+print(df)
+#prints the new DataFrame
