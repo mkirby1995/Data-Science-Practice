@@ -1,0 +1,59 @@
+#Rearranging data with Mergesort
+
+data = [9, 5, 7, 4, 2, 8, 1, 10, 6, 3]
+
+def mergeSort(list):
+    # Determine whether the list is broken into
+    # individual pieces.
+    if len(list) < 2:
+        return list
+    
+    #find the middle of the list
+    middle = len(list)//2
+    
+    #break the list into two pieces
+    left = mergeSort(list[:middle])
+    right = mergeSort(list[middle:])
+    
+    #Merge the two sorted pieces into a larger piece
+    print("Left side: ", left)
+    print("Right side: ", right)
+    merged = merge(left, right)
+    print("Merged ", merged)
+    return merged
+
+def merge(left, right):
+    #When the left side or right side is empty,
+    #it means this is an individual item and alrady sorted
+    if not len(left):
+        return left
+    if not len(right):
+        return right
+    
+    #define varioables used to merge the two pieces
+    result = []
+    leftIndex = 0
+    rightIndex = 0
+    totalLen = len(left) + len(right)
+    
+    #keep wporking until all of the items are merged
+    while (len(result) < totalLen):
+        
+        #preform the required comparisons and merge the pieces acording to value
+        if left[leftIndex] < right[rightIndex]:
+            result.append(left[leftIndex])
+            leftIndex+= 1
+        else:
+            result.append(right[rightIndex])
+            rightIndex+= 1
+            
+        #when the left side or the right side is longer add the remaining elements to the result 
+        if leftIndex == len(left) or \
+            rightIndex == len(right):
+                result.extend(left[leftIndex:]
+                    or right[rightIndex:])
+                break
+                
+    return result
+
+mergeSort(data)
