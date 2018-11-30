@@ -1,0 +1,22 @@
+# python3.6 xlpractice.py
+import os
+import openpyxl
+
+os.chdir('/Users/mattkirby/Documents')
+
+wb = openpyxl.load_workbook('Financial Analysis FCX.xlsx')
+sheet = wb.get_sheet_by_name('Income Statement')
+
+Number_of_Stockholders = sheet['B57'].value
+Common_Stock = sheet['B63'].value
+
+
+print("Freeport MacMoRan has", Number_of_Stockholders, "Shareholders.")
+print("The value of Freeport MacMoRan's Common Stock is", Common_Stock ".")
+print("FCX has a Par Value of",  ".")
+print("FCX has a Paid in Capital in Excess of Par of",  ".")
+print("FCX has a Retained Earnings of",  ".")
+print("FCX has an EBIT of",  ".")
+print("FCX has a Tax Rate of",  ".")
+print("The Total Equity Value of FCX is",  ".")
+
