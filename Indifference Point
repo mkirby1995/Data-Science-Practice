@@ -1,0 +1,79 @@
+#python3.6 financial_leverage.py
+
+
+#(import numbers from excel wooksheet
+
+#import openpyxl
+#import os
+
+#os.chdir('/Users/mattkirby/Documents')
+# changes working directory to desired direcory (location of excel file)
+
+#wb = openpyxl.load_workbook('Financial Analysis FCX.xlsx')
+# sets wb variable to the desired workbook
+
+#sheet = wb.get_sheet_by_name('Income Statement')
+#sets sheet variable to desired sheet
+
+#Common_Stock = sheet['B63'].value
+#sets common stock variable to the value of cell B63 in (sheet variable)
+#)
+
+#Indifference Point
+Stock_Option = {
+  'Raise': '8000000',
+  'Price': '25',
+}
+
+Bond_Option = {
+  'Raise': '8000000',
+  'Bond_rate': '.09',
+}
+
+Tax_Rate = .3
+
+
+Bond_Option_New_Intrest = float(Bond_Option['Raise']) * float(Bond_Option['Bond_rate'])
+
+Bond_Option_Intrest = (Company_B_Intrest + Bond_Option_New_Intrest) / 1000000
+Bond_Option_Taxes = 1 - Tax_Rate
+Bond_Option_Shares = Company_B_Shares / 1000000
+
+
+Stock_Option_New_Shares = float(Stock_Option['Raise']) / float(Stock_Option['Price'])
+
+Stock_Option_Taxes = 1 - Tax_Rate
+Stock_Option_Intrest = Company_B_Intrest / 1000000
+Stock_Option_Shares = (Stock_Option_New_Shares + Company_B_Shares) / 1000000
+
+Dis_1 = Bond_Option_Taxes
+Dis_2 = Bond_Option_Taxes * Bond_Option_Intrest
+Dis_3 = Stock_Option_Taxes
+Dis_4 = Stock_Option_Taxes * Stock_Option_Intrest
+Simp_1 = Bond_Option_Shares * Dis_3
+Simp_2 = Bond_Option_Shares * Dis_4
+Simp_3 = Stock_Option_Shares * Dis_1
+Simp_4 = Stock_Option_Shares * Dis_2
+Simp_5 = Simp_3 - Simp_1
+Simp_6 = Simp_4 - Simp_2
+Indifference_Point = (Simp_6 / Simp_5) * 1000000
+
+print("What is the Expected EBIT", end =' ')
+EBIT = input()
+
+print("Company A EPS =", Company_A_EPS)
+print("Company A ROE =", Company_A_ROE)
+print("Company A DFL =", Company_A_DFL)
+print('_' * 10)
+print("Company B EPS =", Company_B_EPS)
+print("Company B ROE =", Company_B_ROE)
+print("Company B DFL =", Company_B_DFL)
+print('_' * 10)
+print(Indifference_Point)
+
+if Indifference_Point > int(EBIT):
+    print("Best Option is Leverage")
+
+else:
+    print("Best Option is Equity")
+
