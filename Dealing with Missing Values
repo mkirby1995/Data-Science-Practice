@@ -1,0 +1,27 @@
+#Dealing with missing values
+
+import pandas as pd
+import numpy as np
+#imports the pandas and numpy libraries
+
+df = pd.DataFrame({'A': [0,0,1,None],
+                  'B': [1,2,3,4],
+                  'C': [np.NAN,3,4,1]},
+                  dtype=int)
+#created a pandas DataFrame with three columns named A,B, and C and sets the datatype to integer
+
+print(df, "\n")
+#prints the DataFrame
+
+values = pd.Series(df.mean(), dtype=int)
+#creates a Series with the mean of each column
+
+print(values, "\n")
+#prints the mean of each column
+
+df = df.fillna(values)
+#gets rid of missing values in the columns 
+
+print(df)
+#prints the new DataFrame
+
