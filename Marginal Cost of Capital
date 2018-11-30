@@ -1,0 +1,82 @@
+#python3.6 marginal_cost_of_capital.py
+
+#Capital Structure
+Bonds = {
+  'weight': .4,
+  'sc_one': .06,
+  'sc_ceiling': 3000000,
+  'sc_two': .09,
+}
+Preferred_Stock = {
+  'weight': .2,
+  'sc_one': .11,
+  'sc_ceiling': 2000000,
+  'sc_two': .13,
+}
+Common_Stock = {
+  'weight': .3,
+  'sc_one': .15,
+  'sc_ceiling': 6000000,
+  'sc_two': .18,
+}
+Retained_Earnings = {
+  'weight': .1,
+  'sc_one': .14,
+}
+
+
+#Calculate Breaks
+  #Bonds
+Bond_Break = (Bonds['sc_ceiling']) / (Bonds['weight'])
+
+  #Preferred Stock
+Preferred_Stock_Break = (Preferred_Stock['sc_ceiling']) / (Preferred_Stock['weight'])
+
+  #Common Stock
+Common_Stock_Break = (Common_Stock['sc_ceiling']) / (Common_Stock['weight'])
+
+#print(Bond_Break, Preferred_Stock_Break, Common_Stock_Break)
+
+# need to use a for loop to change sc_one to sc_two
+#for i in range (0, 1000000000)
+
+#MCC 0 - 7.5M
+MCC1_B = (Bonds['weight']) * (Bonds['sc_one'])
+MCC1_PS = (Preferred_Stock['weight']) * (Preferred_Stock['sc_one'])
+MCC1_CS = (Common_Stock['weight']) * (Common_Stock['sc_one'])
+MCC1_RE = (Retained_Earnings['weight']) * (Retained_Earnings['sc_one'])
+MCC1 = MCC1_B + MCC1_PS + MCC1_CS + MCC1_RE
+
+print('_' * 10)
+print(MCC1)
+
+#MCC 7.5M - 10M
+MCC2_B = (Bonds['weight']) * (Bonds['sc_two'])
+MCC2_PS = (Preferred_Stock['weight']) * (Preferred_Stock['sc_one'])
+MCC2_CS = (Common_Stock['weight']) * (Common_Stock['sc_one'])
+MCC2_RE = (Retained_Earnings['weight']) * (Retained_Earnings['sc_one'])
+MCC2 = MCC2_B + MCC2_PS + MCC2_CS + MCC2_RE
+
+print('_' * 10)
+print(MCC2)
+
+#MCC 10M - 20M
+MCC3_B = (Bonds['weight']) * (Bonds['sc_two'])
+MCC3_PS = (Preferred_Stock['weight']) * (Preferred_Stock['sc_two'])
+MCC3_CS = (Common_Stock['weight']) * (Common_Stock['sc_one'])
+MCC3_RE = (Retained_Earnings['weight']) * (Retained_Earnings['sc_one'])
+MCC3 = MCC3_B + MCC3_PS + MCC3_CS + MCC3_RE
+
+print('_' * 10)
+print(MCC3)
+
+#MCC 20M +
+MCC4_B = (Bonds['weight']) * (Bonds['sc_two'])
+MCC4_PS = (Preferred_Stock['weight']) * (Preferred_Stock['sc_two'])
+MCC4_CS = (Common_Stock['weight']) * (Common_Stock['sc_two'])
+MCC4_RE = (Retained_Earnings['weight']) * (Retained_Earnings['sc_one'])
+MCC4 = MCC4_B + MCC4_PS + MCC4_CS + MCC4_RE
+
+print('_' * 10)
+print(MCC4)
+
