@@ -1,0 +1,39 @@
+#Monte Carlo Valuation of European cal option with NumPy
+#mcs_full_vector_numpy.py
+
+import math
+from numpy import *
+from time import time
+#star import for shorter code
+
+random.seed(2000)
+t0 = time()
+
+#Parameters
+S0 = 100.; K = 105.; T = 1.; r = 0.05; sigma = 0.2
+M = 50; dt = T / M; I = 250000
+
+#Simulating I paths with M time steps
+S = S0 * exp(cumsum((r - 0.5 * sigma ** 2) * dt
+ + sigma * math.sqrt(dt)
+  * random.standard_normal((M + 1, I)), axis=0))
+
+S[0] = S0
+
+#Calculating the Monte Carlo estimator
+C0 = math.exp(-r * T) * sum(maximum(S[-1] - K, 0)) / I
+
+#results output
+tnp2 = time() - t0
+print("European Option Value %7.3f" % C0)
+print("Duration in Seconds   %7.3f" % tnp2)
+
+import matplotlib.pyplot as plt
+plt.plot(S[:, :10])
+plt.grid(True)
+plt.xlabel('time step')
+plt.ylabel('index level')
+
+#python3.6 Monte_Carlo.py
+
+
