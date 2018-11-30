@@ -1,0 +1,60 @@
+#python3.6 coefficient_of_variation.py
+
+import math
+
+#Part 1
+print("What is the Annual Cashflow of the best outcome", end =' ')
+ACBO = input() #Annual_Cashflow_of_best_outcome
+
+print("What is the Probablity of the best outcome", end =' ')
+PBO = input() #Probability_of_best_outcome
+
+print("What is the Annual Cashflow of the average outcome", end =' ')
+ACAO = input() #Annual_Cashflow_of_average_outcome
+
+print("What is the Probablity of the average outcome", end =' ')
+PAO = input() #Probability_of_average_outcome
+
+print("What is the Annual Cashflow of the worst outcome", end =' ')
+ACWO = input() #Annual_Cashflow_of_worst_outcome
+
+print("What is the Probablity of the worst outcome", end =' ')
+PWO = input() #Probability_of_worst_outcome
+
+EXB = (float(PBO) * int(ACBO)) #finds expected return for the best outcome
+EXA = (float(PAO) * int(ACAO)) #finds expected return for the average outcome
+EXW = (float(PWO) * int(ACWO)) #finds expected return for the worst outcome
+
+TEXR = EXB + EXA + EXW #finds the total expected return of all three possible outcomes
+
+
+#Part 2
+    #Best Outcome
+DBO = int(ACBO) - int(TEXR) #sets DBO to the difference of ACBO and TEXR
+BSQ = int(DBO)**2 #sets BSQ to the square of DBO
+VBO = float(BSQ) * float(PBO) #sets VBO to the product of BSQ and PBO
+
+    #Average Outcome
+DAO = int(ACAO) - int(TEXR) #sets DAO to the difference of ACAO and TEXR
+ASQ = int(DAO)**2 #sets ASQ to the square of DAO
+VAO = float(ASQ) * float(PAO) #sets VAO to the product of ASQ and PAO
+
+    #Worst Outcome 
+DWO = int(ACWO) - int(TEXR) #sets DWO to the difference of ACWO and TEXR
+WSQ = int(DWO)**2 #sets WSQ to the square of DWO
+VWO = float(WSQ) * float(PWO) #sets VWO to the product of WSQ and PWO
+
+
+#Part 3
+    #Calculate Variance
+Variance = float(VBO) + float(VAO) + float(VWO) #sets variance to the sum of VBO, VAO, and VWO
+print("Variance = ", Variance)
+
+    #Calculate the Standard Diviation
+Standard_Deviation = math.sqrt(float(Variance))
+print("Standard Diviation = ", Standard_Deviation)
+
+    #Calculate the coefficient_of_variation
+coefficient_of_variation = float(Standard_Deviation)/float(TEXR)
+print("Coefficient of Variation = ", coefficient_of_variation)
+
