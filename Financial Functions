@@ -1,0 +1,37 @@
+# python3.6 financial_functions.py
+
+print("What is the Common Stock value of the company?", end =' ')
+Common_Stock = input()
+
+print("What is the Par Value of the company's stock?", end =' ')
+Par_Value = input()
+
+print("What is the Tax_Rate of the company?", end =' ')
+Tax_Rate = input()
+
+print("What is the company's net income?", end =' ')
+EBIT = input()
+
+
+def EPS ():
+    Taxes = EBIT * Tax_Rate
+    EAT = EBIT - Taxes
+    Number_of_Shares = Common_Stock / Par_Value
+    EPS = EAT / Number_of_Shares
+    return EPS
+
+print(EPS)
+
+#def ROE (EBIT, Tax_Rate, ):
+    #Taxes = EBIT * Tax_Rate
+    #EAT = EBIT - Taxes
+
+
+#def DFL ():
+
+#def Coefficient_of_Variation ():
+
+#def Indifference_Point ():
+
+#def MCC ():
+
